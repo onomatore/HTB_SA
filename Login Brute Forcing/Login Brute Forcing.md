@@ -8,7 +8,7 @@
 
 При переходе по URL встречает окно логина, значит используем `hydra`
 
-<img width="1041" height="374" alt="image" src="https://github.com/onomatore/HTB_SA/LoginBruteForcing/553886558-b286fc63-8e96-4cd1-991a-7d3713136ef7.png" />
+<img width="1041" height="374" alt="image" src="[image](https://github.com/onomatore/HTB_SA/blob/main/Login%20Brute%20Forcing/553886558-b286fc63-8e96-4cd1-991a-7d3713136ef7.png)" />
 
 
 Скачиваем необходимые списки для пароля и логина
