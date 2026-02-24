@@ -8,7 +8,7 @@
 Необходимо выявить тип уязвимости.
 Им оказался SSTI
 
-<img width="1551" height="418" alt="image" src="https://github.com/user-attachments/assets/3fe432b2-ec70-44f8-874c-f5d7297d5d83" />
+![image](https://github.com/onomatore/HTB_SA/blob/main/Server-Side%20Attacks/img/1.png)
 
 Нагрузка дала такой результат: `{{7*'7'}}` = 49, соответственно шаблонизатор - `twig`
 
@@ -25,30 +25,30 @@
 
 `{{_self}}` - работает и выводит 
 
-<img width="666" height="92" alt="image" src="https://github.com/user-attachments/assets/30c0a050-cfc1-4aab-b4e0-81d2047c3df8" />
+![image](https://github.com/onomatore/HTB_SA/blob/main/Server-Side%20Attacks/img/2.png)
 
 Загрузил все возможные пейлоды для TWIG  и нашел пару рабочих.
 
-<img width="1788" height="175" alt="image" src="https://github.com/user-attachments/assets/f5adb5b1-c501-41df-836a-dd1841f93b40" />
+![image](https://github.com/onomatore/HTB_SA/blob/main/Server-Side%20Attacks/img/3.png)
 
 
 Например такой, наконец выводил `ls`
 
-<img width="1624" height="274" alt="image" src="https://github.com/user-attachments/assets/f1143cc3-82c2-4edc-87c2-1b8e8bf78f2d" />
+![image](https://github.com/onomatore/HTB_SA/blob/main/Server-Side%20Attacks/img/4.png)
 
 Но при попытке прочитать директорию выводил ту же ошибку (3).  Пробел через кодирование `%20`, также не проходит. 
 
 Тогда я попробовал другую нагрузку где читался файл `/etc/passwd`, а именно:
 `{{['cat$IFS/etc/passwd']|filter('system')}}`
 
-<img width="471" height="373" alt="image" src="https://github.com/user-attachments/assets/7aab3788-7d49-49dc-8fb9-8b4af889aa53" />
+![image](https://github.com/onomatore/HTB_SA/blob/main/Server-Side%20Attacks/img/5.png)
 
 
 Стало ясно, что нужно использовать `$IFS`, поэтому добавил его к своей нагрузке
 `{{['ls$IFS/']|filter('passthru')}}` и получил ответ
 
-<img width="350" height="242" alt="image" src="https://github.com/user-attachments/assets/ffb82d35-064a-4311-801e-16e3edfed7a3" />
+![image](https://github.com/onomatore/HTB_SA/blob/main/Server-Side%20Attacks/img/6.png)
 
 
 Результат чтения флага.
-<img width="1788" height="194" alt="image" src="https://github.com/user-attachments/assets/6d4aa582-5474-4c66-a877-d6db199cc547" />
+![image](https://github.com/onomatore/HTB_SA/blob/main/Server-Side%20Attacks/img/7.png)
