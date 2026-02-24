@@ -100,6 +100,7 @@ ftp ftp://thomas:chocolate!@localhost
 ![image](https://github.com/onomatore/HTB_SA/blob/main/LoginBruteForcing/img/13.png)
 
 Просматриваем директорию на наличие файлов и обнаруживаем `flag.txt`, скачиваем его и просматриваем в нашем ssh подключении.
+
 ![image](https://github.com/onomatore/HTB_SA/blob/main/LoginBruteForcing/img/14.png)
 
 `HTB{brut3f0rc1ng_succ3ssful}`
